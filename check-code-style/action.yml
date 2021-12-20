@@ -14,7 +14,9 @@ runs:
       shell: bash
 
     - name: Check all .cc , .h, .proto files for correct code style
-      run: chmod +x dev-tools/check_style.sh && dev-tools/./check_style.sh
+      run: | 
+        chmod +x dev-tools/check-code-style/check_style.sh
+        dev-tools/check-code-style/./check_style.sh
       shell: bash
 
     - name: Install buildifier for .bzl files
@@ -22,5 +24,7 @@ runs:
       shell: bash
 
     - name: Check all .bzl, .bazel files for correct code style
-      run: chmod +x dev-tools/check_style_bzl.sh && dev-tools/./check_style_bzl.sh    
+      run: |
+        chmod +x dev-tools/check-code-style/check_style_bzl.sh
+        dev-tools/check-code-style/./check_style_bzl.sh    
       shell: bash
