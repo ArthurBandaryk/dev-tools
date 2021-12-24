@@ -56,14 +56,14 @@ check_clang_format() {
   which git >/dev/null
   if [[ $? != 0 ]]; then
     printf "Failed to find 'git' (please install or update your path)\n"
-    exit 1
+    return 1
   fi
 
   # Check for existence of clang-format.
   which clang-format >/dev/null
   if [[ ${?} != 0 ]]; then
     printf "Failed to find 'clang-format'\n"
-    exit 1
+    return 1
   fi
 
   # IMPORTANT NOTE.
@@ -92,7 +92,7 @@ check_clang_format() {
     printf "clang-format version '%s' is required but found '%s'\n" \
       "${clang_format_version_required}" \
       "${clang_format_version_found}"
-    exit 1
+    return 1
   fi
 
   # Get top-level directory so we can look for .clang-format file.
@@ -101,7 +101,7 @@ check_clang_format() {
   # Check for .clang-format file.
   if [[ ! -f "${directory}/.clang-format" ]]; then
     printf "Failed to find '.clang-format' file at '%s'\n" "${directory}"
-    exit 1
+    return 1
   fi
 
   clang-format --dry-run -Werror --ferror-limit=0  "${file}"
