@@ -2,6 +2,11 @@
 
 name: 'Check Code Style'
 desciption: 'Check files for correct code style'
+inputs:
+  clang-format-version: 
+    description: 'Version of the clang-format for usage'
+    required: false
+    default: '12'
 
 runs:
   using: "composite"
@@ -22,10 +27,11 @@ runs:
       run: |
         # Before we recreate the symlink we should delete
         # the existing one.
-        sudo rm /etc/alternatives/clang-format
+        #sudo rm /etc/alternatives/clang-format
 
         # Recreate symlink 'clang-format'
-        sudo ln -s /usr/bin/clang-format-12 /etc/alternatives/clang-format 
+        #sudo ln -s /usr/bin/clang-format-${{ inputs.clang-format-version }} /etc/alternatives/clang-format 
+        clang-format --version
       shell: bash
 
     - name: Check all .cc , .h, .proto files for correct code style
