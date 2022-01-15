@@ -13,4 +13,4 @@ which ${INSTALL_DIR}/bazel-compilation-database-${VERSION}/generate.py &> /dev/n
 # Run python script which generates compilation database.
 # We should add `--action_env=CC=clang` cause we need clang
 # for using clang-tidy.
-${INSTALL_DIR}/bazel-compilation-database-${VERSION}/generate.py -- --action_env=CC=clang --copt="--language=c++"
+${INSTALL_DIR}/bazel-compilation-database-${VERSION}/generate.py -- --action_env=CC=clang
