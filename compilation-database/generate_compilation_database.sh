@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_DIR="."
+INSTALL_DIR="/dev-tools/compilation-database"
 VERSION="0.5.2"
 
 # Check if `generate.py` is already present.
