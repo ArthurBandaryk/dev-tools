@@ -9,8 +9,8 @@ inputs:
     required: 'false'
     default: "ubuntu-latest"
 
-runs-on: ${{ inputs.os }}
-  #using: "composite"
+runs:
+  using: "composite"
   steps:
     - name: Check all .cc , .h, .proto files for correct code style
       run: | 
