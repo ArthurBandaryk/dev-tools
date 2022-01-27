@@ -13,7 +13,7 @@ runs:
   using: "composite"
   steps:
     - name: Create symlink to clang-format if Ubuntu
-      if: ${{ inputs.os == "ubuntu-latest" }}
+      if: inputs.os == 'ubuntu-latest'
       # IMPORTANT NOTE
       # https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-Readme.md
       # If you check the link above you will see that on Ubuntu 20.04
