@@ -12,6 +12,10 @@ inputs:
 runs-on: ${{ inputs.os }}
   using: "composite"
   steps:
+    - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+            
     - name: Check all .cc , .h, .proto files for correct code style
       run: | 
         chmod +x ${{ github.action_path }}/check_style_of_all_files.sh
