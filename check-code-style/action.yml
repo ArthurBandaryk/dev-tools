@@ -10,7 +10,7 @@ inputs:
     default: "ubuntu-latest"
 
 runs-on: ${{ inputs.os }}
-  using: "composite"
+  #using: "composite"
   steps:
     - name: Check all .cc , .h, .proto files for correct code style
       run: | 
