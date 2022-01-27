@@ -7,15 +7,11 @@ inputs:
   os: 
     description: 'Specify operating system on wich this action will run'
     required: 'false'
-    default: 'ubuntu-latest'
+    default: "ubuntu-latest"
 
 runs-on: ${{ inputs.os }}
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
-            
     - name: Check all .cc , .h, .proto files for correct code style
       run: | 
         chmod +x ${{ github.action_path }}/check_style_of_all_files.sh
