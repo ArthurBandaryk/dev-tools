@@ -1,4 +1,5 @@
 # The name of this file should be `action.yml` , `action.yaml` or `Dockerfile`.
+# Should be run only on macOS or Ubuntu.
 
 name: 'Check Code Style'
 desciption: 'Check files for correct code style'
@@ -6,8 +7,8 @@ desciption: 'Check files for correct code style'
 inputs:
   os: 
     description: 'Specify operating system on wich this action will run'
-    required: 'false'
-    default: "ubuntu-latest"
+    required: 'true'
+    default: 'ubuntu-latest'
 
 runs:
   using: "composite"
@@ -31,7 +32,13 @@ runs:
         sudo rm /etc/alternatives/clang-format
         # Recreate symlink 'clang-format'
         sudo ln -s /usr/bin/clang-format-12 /etc/alternatives/clang-format 
-      shell: bash  
+      shell: bash
+
+    - name: Install clang-format-13 if macOS
+      if: inputs.os == 'macos-latest'
+      run: |
+        brew install clang-format@13
+      shell: bash    
 
     - name: Check all .cc , .h, .proto files for correct code style
       run: | 
